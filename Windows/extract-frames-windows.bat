@@ -14,6 +14,10 @@ cd C:\Program Files (x86)\VideoLAN\VLC
 rem Asks user for a video file. If the video file is invalid, it tries again.
 :AskForFile
 set /p _filePath= Please drag the video file you want to extract frames from, and press Enter...
+
+rem Remove quotes
+set _filePath=%_filePath:"=%
+
 if exist "%_filePath%" (
   echo.
   echo Good.
@@ -29,6 +33,10 @@ if exist "%_filePath%" (
 rem Asks user for a folder. If the folder is invalid, it tries again.
 :AskForFolder
 set /p _framesPath= Please drag the folder that you want the images to be saved in, and press Enter...
+
+rem Remove quotes
+set _framesPath=%_framesPath:"=%
+
 if exist "%_framesPath%" (
   echo.
   echo Good.
@@ -40,6 +48,8 @@ if exist "%_framesPath%" (
   echo You did not give me a folder, but something else, that I don't want at all.
   goto AskForFolder
 )
+
+
 
 rem Asks user for an integer. If the integer is invalid, it tries again.
 :AskForInterval
@@ -54,9 +64,11 @@ IF %errorlevel% equ 0 (
   goto AskForInterval
 )
 
+
 rem Starts extracting after 3 seconds.
 :Extracting
 echo.
+
 echo All good! We will start in:
 echo ...3...
 timeout 1 > nul
