@@ -9,7 +9,7 @@ timeout 1 > nul
 echo Hello Friend.
 timeout 1 > nul
 
-cd C:\Program Files (x86)\VideoLAN\VLC
+cd "C:\Program Files\VideoLAN\VLC"
 
 rem Asks user for a video file. If the video file is invalid, it tries again.
 :AskForFile
